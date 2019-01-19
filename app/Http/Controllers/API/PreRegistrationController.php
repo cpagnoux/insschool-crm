@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\PreRegistration;
+use App\Http\Resources\PreRegistration as PreRegistrationResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class PreRegistrationController extends Controller
      */
     public function index()
     {
-        //
+        return PreRegistrationResource::collection(PreRegistration::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class PreRegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $preRegistration = PreRegistration::create($request->all());
+
+        return new PreRegistrationResource($preRegistration);
     }
 
     /**
@@ -37,7 +40,7 @@ class PreRegistrationController extends Controller
      */
     public function show(PreRegistration $preRegistration)
     {
-        //
+        return new PreRegistrationResource($preRegistration);
     }
 
     /**
@@ -49,7 +52,9 @@ class PreRegistrationController extends Controller
      */
     public function update(Request $request, PreRegistration $preRegistration)
     {
-        //
+        $preRegistration->update($request->all());
+
+        return new PreRegistrationResource($preRegistration);
     }
 
     /**
@@ -60,6 +65,8 @@ class PreRegistrationController extends Controller
      */
     public function destroy(PreRegistration $preRegistration)
     {
-        //
+        $preRegistration->delete();
+
+        return response()->json(null, 204);
     }
 }
