@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Lesson;
+use App\Http\Resources\Lesson as LessonResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        return LessonResource::collection(Lesson::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lesson = Lesson::create($request->all());
+
+        return new LessonResource($lesson);
     }
 
     /**
@@ -37,7 +40,7 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        return new LessonResource($lesson);
     }
 
     /**
@@ -49,7 +52,9 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //
+        $lesson->update($request->all());
+
+        return new LessonResource($lesson);
     }
 
     /**
@@ -60,6 +65,8 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+
+        return response()->json(null, 204);
     }
 }
