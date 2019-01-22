@@ -17,4 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('pre-registrations', 'API\PreRegistrationController');
+Route::apiResources([
+    'lessons' => 'API\LessonController',
+    'pre-registrations' => 'API\PreRegistrationController',
+]);
