@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Season;
+use App\Http\Resources\Season as SeasonResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        //
+        return SeasonResource::collection(Season::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class SeasonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $season = Season::create($request->all());
+
+        return new SeasonResource($season);
     }
 
     /**
@@ -37,7 +40,7 @@ class SeasonController extends Controller
      */
     public function show(Season $season)
     {
-        //
+        return new SeasonResource($season);
     }
 
     /**
@@ -49,7 +52,9 @@ class SeasonController extends Controller
      */
     public function update(Request $request, Season $season)
     {
-        //
+        $season->update($request->all());
+
+        return new SeasonResource($season);
     }
 
     /**
@@ -60,6 +65,8 @@ class SeasonController extends Controller
      */
     public function destroy(Season $season)
     {
-        //
+        $season->delete();
+
+        return response()->json(null, 204);
     }
 }
