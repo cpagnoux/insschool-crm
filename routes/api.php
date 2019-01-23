@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources([
     'lessons' => 'API\LessonController',
     'pre-registrations' => 'API\PreRegistrationController',
+    'seasons' => 'API\SeasonController',
 ]);
