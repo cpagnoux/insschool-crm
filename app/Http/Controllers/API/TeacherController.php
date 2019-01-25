@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Teacher;
+use App\Http\Resources\Teacher as TeacherResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        return TeacherResource::collection(Teacher::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $teacher = Teacher::create($request->all());
+
+        return new TeacherResource($teacher);
     }
 
     /**
@@ -37,7 +40,7 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        //
+        return new TeacherResource($teacher);
     }
 
     /**
@@ -49,7 +52,9 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
-        //
+        $teacher->update($request->all());
+
+        return new TeacherResource($teacher);
     }
 
     /**
@@ -60,6 +65,8 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+
+        return response()->json(null, 204);
     }
 }
