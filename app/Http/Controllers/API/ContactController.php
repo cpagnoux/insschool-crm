@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Contact;
+use App\Http\Resources\Contact as ContactResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return ContactResource::collection(Contact::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contact = Contact::create($request->all());
+
+        return new ContactResource($contact);
     }
 
     /**
@@ -37,7 +40,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return new ContactResource($contact);
     }
 
     /**
@@ -49,7 +52,9 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->update($request->all());
+
+        return new ContactResource($contact);
     }
 
     /**
@@ -60,6 +65,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return response()->json(null, 204);
     }
 }
