@@ -15,6 +15,20 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('plan', [
+                'ANNUAL',
+                'QUARTERLY',
+            ])->nullable();
+            $table->string('followed_quarters')->nullable();
+            $table->decimal('price', 6, 2)->nullable();
+            $table->integer('discount')->default(0);
+            $table->integer('num_payments')->nullable();
+            $table->text('comment')->nullable();
+            $table->boolean('volunteer')->default(0);
+            $table->boolean('file_photo')->default(0);
+            $table->boolean('file_insurance')->default(0);
+            $table->boolean('file_medical_certificate')->default(0);
+            $table->boolean('file_stamped_envelope')->default(0);
             $table->timestamps();
         });
     }
