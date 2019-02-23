@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Registration;
+use App\Http\Resources\Registration as RegistrationResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        //
+        return RegistrationResource::collection(Registration::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registration = Registration::create($request->all());
+
+        return new RegistrationResource($registration);
     }
 
     /**
@@ -37,7 +40,7 @@ class RegistrationController extends Controller
      */
     public function show(Registration $registration)
     {
-        //
+        return new RegistrationResource($registration);
     }
 
     /**
@@ -49,7 +52,9 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, Registration $registration)
     {
-        //
+        $registration->update($request->all());
+
+        return new RegistrationResource($registration);
     }
 
     /**
@@ -60,6 +65,8 @@ class RegistrationController extends Controller
      */
     public function destroy(Registration $registration)
     {
-        //
+        $registration->delete();
+
+        return response()->json(null, 204);
     }
 }
