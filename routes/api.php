@@ -21,6 +21,7 @@ Route::apiResources([
     'contacts' => 'API\ContactController',
     'lessons' => 'API\LessonController',
     'pre-registrations' => 'API\PreRegistrationController',
+    'products' => 'API\ProductController',
     'registrations' => 'API\RegistrationController',
     'rooms' => 'API\RoomController',
     'seasons' => 'API\SeasonController',
