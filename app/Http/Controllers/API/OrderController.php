@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Order;
+use App\Http\Resources\Order as OrderResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return OrderResource::collection(Order::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = Order::create($request->all());
+
+        return new OrderResource($order);
     }
 
     /**
@@ -37,7 +40,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return new OrderResource($order);
     }
 
     /**
@@ -49,7 +52,9 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->update($request->all());
+
+        return new OrderResource($order);
     }
 
     /**
@@ -60,6 +65,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        return response()->json(null, 204);
     }
 }
