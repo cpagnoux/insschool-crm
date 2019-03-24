@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources([
     'contacts' => 'API\ContactController',
     'lessons' => 'API\LessonController',
+    'orders' => 'API\OrderController',
     'pre-registrations' => 'API\PreRegistrationController',
     'products' => 'API\ProductController',
     'registrations' => 'API\RegistrationController',
