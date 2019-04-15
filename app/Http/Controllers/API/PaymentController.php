@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Payment;
+use App\Http\Resources\Payment as PaymentResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        return PaymentResource::collection(Payment::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $payment = Payment::create($request->all());
+
+        return new PaymentResource($payment);
     }
 
     /**
@@ -37,7 +40,7 @@ class PaymentController extends Controller
      */
     public function show(Payment $payment)
     {
-        //
+        return new PaymentResource($payment);
     }
 
     /**
@@ -49,7 +52,9 @@ class PaymentController extends Controller
      */
     public function update(Request $request, Payment $payment)
     {
-        //
+        $payment->update($request->all());
+
+        return new PaymentResource($payment);
     }
 
     /**
@@ -60,6 +65,8 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        $payment->delete();
+
+        return response()->json(null, 204);
     }
 }
