@@ -15,6 +15,13 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
+            $table->decimal('amount', 6, 2);
+            $table->enum('mode', [
+                'CASH',
+                'CHECK',
+            ]);
+            $table->date('cashing_date');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
