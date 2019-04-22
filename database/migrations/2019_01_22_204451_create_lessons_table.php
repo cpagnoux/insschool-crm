@@ -15,6 +15,7 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('season_id');
             $table->string('title');
             $table->enum('day', [
                 'MONDAY',

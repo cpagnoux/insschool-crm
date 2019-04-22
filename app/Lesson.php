@@ -16,4 +16,9 @@ class Lesson extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function season()
+    {
+        return $this->belongsTo('App\Season');
+    }
 }
