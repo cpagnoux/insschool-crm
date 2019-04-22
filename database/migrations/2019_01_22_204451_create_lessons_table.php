@@ -27,6 +27,7 @@ class CreateLessonsTable extends Migration
             ])->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
+            $table->unsignedInteger('room_id')->nullable();
             $table->text('costume')->nullable();
             $table->timestamps();
         });

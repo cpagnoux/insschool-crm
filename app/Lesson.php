@@ -26,4 +26,9 @@ class Lesson extends Model
     {
         return $this->belongsTo('App\Teacher');
     }
+
+    public function room()
+    {
+        return $this->belongsTo('App\Room');
+    }
 }

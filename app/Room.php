@@ -16,4 +16,9 @@ class Room extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function lessons()
+    {
+        return $this->hasMany('App\Lesson');
+    }
 }
