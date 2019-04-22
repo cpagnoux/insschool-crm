@@ -17,6 +17,7 @@ class CreateLessonsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('season_id');
             $table->string('title');
+            $table->unsignedInteger('teacher_id')->nullable();
             $table->enum('day', [
                 'MONDAY',
                 'TUESDAY',

@@ -21,4 +21,9 @@ class Lesson extends Model
     {
         return $this->belongsTo('App\Season');
     }
+
+    public function teacher()
+    {
+        return $this->belongsTo('App\Teacher');
+    }
 }
