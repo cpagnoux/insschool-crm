@@ -16,6 +16,7 @@ class CreateRegistrationsTable extends Migration
         Schema::create('registrations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('contact_id');
+            $table->unsignedInteger('season_id');
             $table->enum('plan', [
                 'ANNUAL',
                 'QUARTERLY',

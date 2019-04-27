@@ -21,4 +21,9 @@ class Season extends Model
     {
         return $this->hasMany('App\Lesson');
     }
+
+    public function registrations()
+    {
+        return $this->hasMany('App\Registration');
+    }
 }

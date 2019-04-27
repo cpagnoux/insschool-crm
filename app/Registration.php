@@ -21,4 +21,9 @@ class Registration extends Model
     {
         return $this->belongsTo('App\Contact');
     }
+
+    public function season()
+    {
+        return $this->belongsTo('App\Season');
+    }
 }
