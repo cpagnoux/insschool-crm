@@ -21,4 +21,9 @@ class Contact extends Model
     {
         return $this->hasMany('App\Order');
     }
+
+    public function registrations()
+    {
+        return $this->hasMany('App\Registration');
+    }
 }
