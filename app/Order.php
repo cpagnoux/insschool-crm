@@ -16,4 +16,9 @@ class Order extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function contact()
+    {
+        return $this->belongsTo('App\Contact');
+    }
 }
