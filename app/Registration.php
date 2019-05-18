@@ -26,4 +26,11 @@ class Registration extends Model
     {
         return $this->belongsTo('App\Season');
     }
+
+    public function lessons()
+    {
+        return $this->belongsToMany('App\Lesson')
+                    ->withPivot('show_participation')
+                    ->withTimestamps();
+    }
 }

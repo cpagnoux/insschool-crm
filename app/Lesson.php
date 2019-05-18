@@ -31,4 +31,11 @@ class Lesson extends Model
     {
         return $this->belongsTo('App\Room');
     }
+
+    public function registrations()
+    {
+        return $this->belongsToMany('App\Registration')
+                    ->withPivot('show_participation')
+                    ->withTimestamps();
+    }
 }
