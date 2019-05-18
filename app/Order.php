@@ -21,4 +21,11 @@ class Order extends Model
     {
         return $this->belongsTo('App\Contact');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Product')
+                    ->withPivot('quantity')
+                    ->withTimestamps();
+    }
 }
