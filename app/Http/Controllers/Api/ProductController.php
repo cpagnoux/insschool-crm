@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Payment;
-use App\Http\Resources\Payment as PaymentResource;
+use App\Product;
+use App\Http\Resources\Product as ProductResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PaymentController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return PaymentResource::collection(Payment::all());
+        return ProductResource::collection(Product::all());
     }
 
     /**
@@ -27,45 +27,45 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $payment = Payment::create($request->all());
+        $product = Product::create($request->all());
 
-        return new PaymentResource($payment);
+        return new ProductResource($product);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show(Product $product)
     {
-        return new PaymentResource($payment);
+        return new ProductResource($product);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Payment  $payment
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, Product $product)
     {
-        $payment->update($request->all());
+        $product->update($request->all());
 
-        return new PaymentResource($payment);
+        return new ProductResource($product);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payment $payment)
+    public function destroy(Product $product)
     {
-        $payment->delete();
+        $product->delete();
 
         return response()->json(null, 204);
     }

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Room;
-use App\Http\Resources\Room as RoomResource;
+use App\Payment;
+use App\Http\Resources\Payment as PaymentResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class RoomController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return RoomResource::collection(Room::all());
+        return PaymentResource::collection(Payment::all());
     }
 
     /**
@@ -27,45 +27,45 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        $room = Room::create($request->all());
+        $payment = Payment::create($request->all());
 
-        return new RoomResource($room);
+        return new PaymentResource($payment);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Room  $room
+     * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Room $room)
+    public function show(Payment $payment)
     {
-        return new RoomResource($room);
+        return new PaymentResource($payment);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Room  $room
+     * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request, Payment $payment)
     {
-        $room->update($request->all());
+        $payment->update($request->all());
 
-        return new RoomResource($room);
+        return new PaymentResource($payment);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Room  $room
+     * @param  \App\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $room)
+    public function destroy(Payment $payment)
     {
-        $room->delete();
+        $payment->delete();
 
         return response()->json(null, 204);
     }

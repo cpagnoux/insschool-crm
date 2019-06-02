@@ -18,14 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'contacts' => 'API\ContactController',
-    'lessons' => 'API\LessonController',
-    'orders' => 'API\OrderController',
-    'payments' => 'API\PaymentController',
-    'pre-registrations' => 'API\PreRegistrationController',
-    'products' => 'API\ProductController',
-    'registrations' => 'API\RegistrationController',
-    'rooms' => 'API\RoomController',
-    'seasons' => 'API\SeasonController',
-    'teachers' => 'API\TeacherController',
+    'contacts' => 'Api\ContactController',
+    'lessons' => 'Api\LessonController',
+    'orders' => 'Api\OrderController',
+    'payments' => 'Api\PaymentController',
+    'pre-registrations' => 'Api\PreRegistrationController',
+    'products' => 'Api\ProductController',
+    'registrations' => 'Api\RegistrationController',
+    'rooms' => 'Api\RoomController',
+    'seasons' => 'Api\SeasonController',
+    'teachers' => 'Api\TeacherController',
 ]);

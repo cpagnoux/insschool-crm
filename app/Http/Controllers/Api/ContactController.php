@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Product;
-use App\Http\Resources\Product as ProductResource;
+use App\Contact;
+use App\Http\Resources\Contact as ContactResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ProductResource::collection(Product::all());
+        return ContactResource::collection(Contact::all());
     }
 
     /**
@@ -27,45 +27,45 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($request->all());
+        $contact = Contact::create($request->all());
 
-        return new ProductResource($product);
+        return new ContactResource($contact);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Contact $contact)
     {
-        return new ProductResource($product);
+        return new ContactResource($contact);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Contact $contact)
     {
-        $product->update($request->all());
+        $contact->update($request->all());
 
-        return new ProductResource($product);
+        return new ContactResource($contact);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Contact $contact)
     {
-        $product->delete();
+        $contact->delete();
 
         return response()->json(null, 204);
     }

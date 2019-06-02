@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Registration;
-use App\Http\Resources\Registration as RegistrationResource;
+use App\Lesson;
+use App\Http\Resources\Lesson as LessonResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class RegistrationController extends Controller
+class LessonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return RegistrationResource::collection(Registration::all());
+        return LessonResource::collection(Lesson::all());
     }
 
     /**
@@ -27,45 +27,45 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        $registration = Registration::create($request->all());
+        $lesson = Lesson::create($request->all());
 
-        return new RegistrationResource($registration);
+        return new LessonResource($lesson);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Registration  $registration
+     * @param  \App\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function show(Registration $registration)
+    public function show(Lesson $lesson)
     {
-        return new RegistrationResource($registration);
+        return new LessonResource($lesson);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Registration  $registration
+     * @param  \App\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registration $registration)
+    public function update(Request $request, Lesson $lesson)
     {
-        $registration->update($request->all());
+        $lesson->update($request->all());
 
-        return new RegistrationResource($registration);
+        return new LessonResource($lesson);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Registration  $registration
+     * @param  \App\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registration $registration)
+    public function destroy(Lesson $lesson)
     {
-        $registration->delete();
+        $lesson->delete();
 
         return response()->json(null, 204);
     }

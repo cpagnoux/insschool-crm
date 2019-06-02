@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Order;
-use App\Http\Resources\Order as OrderResource;
+use App\Season;
+use App\Http\Resources\Season as SeasonResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class OrderController extends Controller
+class SeasonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return OrderResource::collection(Order::all());
+        return SeasonResource::collection(Season::all());
     }
 
     /**
@@ -27,45 +27,45 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order = Order::create($request->all());
+        $season = Season::create($request->all());
 
-        return new OrderResource($order);
+        return new SeasonResource($season);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Season  $season
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Season $season)
     {
-        return new OrderResource($order);
+        return new SeasonResource($season);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
+     * @param  \App\Season  $season
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Season $season)
     {
-        $order->update($request->all());
+        $season->update($request->all());
 
-        return new OrderResource($order);
+        return new SeasonResource($season);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Season  $season
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Season $season)
     {
-        $order->delete();
+        $season->delete();
 
         return response()->json(null, 204);
     }

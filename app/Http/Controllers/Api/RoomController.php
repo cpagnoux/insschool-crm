@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Season;
-use App\Http\Resources\Season as SeasonResource;
+use App\Room;
+use App\Http\Resources\Room as RoomResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SeasonController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        return SeasonResource::collection(Season::all());
+        return RoomResource::collection(Room::all());
     }
 
     /**
@@ -27,45 +27,45 @@ class SeasonController extends Controller
      */
     public function store(Request $request)
     {
-        $season = Season::create($request->all());
+        $room = Room::create($request->all());
 
-        return new SeasonResource($season);
+        return new RoomResource($room);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Season  $season
+     * @param  \App\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show(Season $season)
+    public function show(Room $room)
     {
-        return new SeasonResource($season);
+        return new RoomResource($room);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Season  $season
+     * @param  \App\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Season $season)
+    public function update(Request $request, Room $room)
     {
-        $season->update($request->all());
+        $room->update($request->all());
 
-        return new SeasonResource($season);
+        return new RoomResource($room);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Season  $season
+     * @param  \App\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Season $season)
+    public function destroy(Room $room)
     {
-        $season->delete();
+        $room->delete();
 
         return response()->json(null, 204);
     }

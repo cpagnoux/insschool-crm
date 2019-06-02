@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Contact;
-use App\Http\Resources\Contact as ContactResource;
+use App\Registration;
+use App\Http\Resources\Registration as RegistrationResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ContactController extends Controller
+class RegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return ContactResource::collection(Contact::all());
+        return RegistrationResource::collection(Registration::all());
     }
 
     /**
@@ -27,45 +27,45 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $contact = Contact::create($request->all());
+        $registration = Registration::create($request->all());
 
-        return new ContactResource($contact);
+        return new RegistrationResource($registration);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contact  $contact
+     * @param  \App\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show(Registration $registration)
     {
-        return new ContactResource($contact);
+        return new RegistrationResource($registration);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contact  $contact
+     * @param  \App\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, Registration $registration)
     {
-        $contact->update($request->all());
+        $registration->update($request->all());
 
-        return new ContactResource($contact);
+        return new RegistrationResource($registration);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contact  $contact
+     * @param  \App\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy(Registration $registration)
     {
-        $contact->delete();
+        $registration->delete();
 
         return response()->json(null, 204);
     }

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Lesson;
-use App\Http\Resources\Lesson as LessonResource;
+use App\Order;
+use App\Http\Resources\Order as OrderResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class LessonController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        return LessonResource::collection(Lesson::all());
+        return OrderResource::collection(Order::all());
     }
 
     /**
@@ -27,45 +27,45 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        $lesson = Lesson::create($request->all());
+        $order = Order::create($request->all());
 
-        return new LessonResource($lesson);
+        return new OrderResource($order);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Lesson $lesson)
+    public function show(Order $order)
     {
-        return new LessonResource($lesson);
+        return new OrderResource($order);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lesson $lesson)
+    public function update(Request $request, Order $order)
     {
-        $lesson->update($request->all());
+        $order->update($request->all());
 
-        return new LessonResource($lesson);
+        return new OrderResource($order);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Lesson  $lesson
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lesson $lesson)
+    public function destroy(Order $order)
     {
-        $lesson->delete();
+        $order->delete();
 
         return response()->json(null, 204);
     }
