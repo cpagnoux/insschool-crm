@@ -27,15 +27,17 @@ Route::group([
     Route::post('me', 'Api\AuthController@me');
 });
 
-Route::apiResources([
-    'contacts' => 'Api\ContactController',
-    'lessons' => 'Api\LessonController',
-    'orders' => 'Api\OrderController',
-    'payments' => 'Api\PaymentController',
-    'pre-registrations' => 'Api\PreRegistrationController',
-    'products' => 'Api\ProductController',
-    'registrations' => 'Api\RegistrationController',
-    'rooms' => 'Api\RoomController',
-    'seasons' => 'Api\SeasonController',
-    'teachers' => 'Api\TeacherController',
-]);
+Route::middleware('auth:api')->group(function () {
+    Route::apiResources([
+        'contacts' => 'Api\ContactController',
+        'lessons' => 'Api\LessonController',
+        'orders' => 'Api\OrderController',
+        'payments' => 'Api\PaymentController',
+        'pre-registrations' => 'Api\PreRegistrationController',
+        'products' => 'Api\ProductController',
+        'registrations' => 'Api\RegistrationController',
+        'rooms' => 'Api\RoomController',
+        'seasons' => 'Api\SeasonController',
+        'teachers' => 'Api\TeacherController',
+    ]);
+});
